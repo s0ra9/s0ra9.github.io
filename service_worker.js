@@ -1,27 +1,13 @@
-// キャッシュファイルの指定
-var CACHE_NAME = 'pwa-sample-caches';
-var urlsToCache = [
-    '/poster-s0ra9.github.io/',
-];
-
-// インストール処理
-self.addEventListener('install', function(event) {
-    event.waitUntil(
-        caches
-            .open(CACHE_NAME)
-            .then(function(cache) {
-                return cache.addAll(urlsToCache);
-            })
-    );
-});
-
-// リソースフェッチ時のキャッシュロード処理
-self.addEventListener('fetch', function(event) {
-    event.respondWith(
-        caches
-            .match(event.request)
-            .then(function(response) {
-                return response ? response : fetch(event.request);
-            })
-    );
+/** pushサーバーから通知が来たときに発火するevent */
+self.addEventListener('push', (event) => {
+    const msg = event.data.json();
+    const options = {
+        icon: '/test.png', // ← ※必要ファイルには含めませんでしたが、push通知 に画像を設定できます。
+        body: msg.body,
+        data: {
+            url: msg.url
+        },
+    };
+    // デスクトップ通知を表示する
+    self.registration.showNotification(msg.title, options);
 });
