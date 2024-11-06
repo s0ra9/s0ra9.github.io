@@ -26,7 +26,7 @@ $subscription = \Minishlink\WebPush\Subscription::create([
 $report = $webPush->sendOneNotification(
     $subscription,
     json_encode([
-        'title' => 'タイトル',
+        'title' => 'こんにちは',
         'body' => 'PUSH通知のテストです',
         'url' => 'https://s0ra9.github.io/',
     ])
