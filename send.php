@@ -5,7 +5,7 @@ require_once './vendor/autoload.php';
 $r_post = json_decode(file_get_contents('php://input'), true);
 $webPush = new \Minishlink\WebPush\WebPush([
     'VAPID' => [
-        'subject' => 'http://localhost/',
+        'subject' => 'https://s0ra9.github.io/',
         // ↓生成した公開鍵文字列を入れる
         'publicKey' => 'BCaGjW2Ng4iheEakSH_uSlIjoGvAfbUNGhcTogDGbOaGIIluHdqPacqXDl90rVoR1NLqYVBlmIlzsh-4mrVqa7M',
         // ↓生成した秘密鍵文字列を入れる
@@ -28,7 +28,7 @@ $report = $webPush->sendOneNotification(
     json_encode([
         'title' => 'タイトル',
         'body' => 'PUSH通知のテストです',
-        'url' => 'http://localhost/',
+        'url' => 'https://s0ra9.github.io/',
     ])
 );
 $r_response = [
