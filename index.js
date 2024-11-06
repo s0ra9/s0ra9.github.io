@@ -14,8 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
 if ('serviceWorker' in navigator) {
     // Service Workerをファイルを読み込んでブラウザに登録する
     // service-worker.js は必ずドキュメントルート直下に置くことと、scope はめちゃくちゃ重要です！
-    navigator.serviceWorker.register('service-worker.js' )
-    .then(() => console.log('serviceWorker を登録しました。'))
+    navigator.serviceWorker.register('service-worker.js')
+    .then(function(registration)){
+        console.log('serviceWorker を登録しました。');
+    }
 } else {
     console.log('serviceWorker に対応していません。')
 }
